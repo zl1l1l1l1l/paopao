@@ -19,8 +19,9 @@ export function getExtendLen(radian) {
   }
 }
 
-function getMySound() {
-  return new Audio('../../assets/sounds/paopao.wav');
+async function getMySound() {
+  const res = await fetch('../../assets/sounds/paopao.wav')
+  return new Audio(res.url);
 }
 
 /**
@@ -44,7 +45,11 @@ export class Paopao {
     this.radian = radian;
     this.myZIndex = myZIndex;
     this.paopaoPath = null;
-    this.paopaoSound = getMySound();
+    getMySound().then(
+      sound => {
+        this.paopaoSound = sound
+      }
+    )
     myZIndex++;
   }
 
