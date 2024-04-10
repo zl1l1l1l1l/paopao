@@ -1,0 +1,1 @@
+export const packagePath = 'paopao' // 打包发布后的包名

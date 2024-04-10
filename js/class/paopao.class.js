@@ -20,7 +20,7 @@ export function getExtendLen(radian) {
 }
 
 function getMySound() {
-  return new Audio(getDeployUrl('assets/sounds/paopao.wav'));
+  return new Audio(getDeployUrl('/assets/sounds/paopao.wav'));
 }
 
 /**

@@ -1,5 +1,5 @@
 import { globalColor, ctx } from './init.js'
-
+import { packagePath } from './config.js';
 /**
  * 获取区间内的数字，四舍五入保留两位小数
 */
@@ -26,8 +26,14 @@ export function fillPaopaoBox(W, H) {
 }
 
 /**
- * @param str 根目录起始，无/
+ * 线上：包名一定在origin后
+ * @param str 根目录起始，有/
 */
 export function getDeployUrl(str) {
-  return import.meta.url.match(/(http|https):\/\/.*?\//)[0] + str;
+  if(new RegExp(`(http|https):\/\/.*?\/${packagePath}`).test(location.href)) {
+    // 线上
+    return location.origin + `/${packagePath}` + str;
+  }else {
+    return location.origin + str;
+  }
 }
