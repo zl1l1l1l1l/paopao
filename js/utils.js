@@ -24,3 +24,10 @@ export function fillPaopaoBox(W, H) {
   ctx.fillRect(0, 0, W, H);
   ctx.strokeStyle = '#fff';
 }
+
+/**
+ * @param str 根目录起始，无/
+*/
+export function getDeployUrl(str) {
+  return import.meta.url.match(/(http|https):\/\/.*?\//)[0] + str;
+}

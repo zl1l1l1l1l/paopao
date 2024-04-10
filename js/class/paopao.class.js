@@ -1,4 +1,4 @@
-import { getRandom } from "../utils.js";
+import { getRandom, getDeployUrl } from "../utils.js";
 const { 
   ctx,
   W,
@@ -19,9 +19,8 @@ export function getExtendLen(radian) {
   }
 }
 
-async function getMySound() {
-  const res = await fetch('../../assets/sounds/paopao.wav')
-  return new Audio(res.url);
+function getMySound() {
+  return new Audio(getDeployUrl('assets/sounds/paopao.wav'));
 }
 
 /**
@@ -45,11 +44,7 @@ export class Paopao {
     this.radian = radian;
     this.myZIndex = myZIndex;
     this.paopaoPath = null;
-    getMySound().then(
-      sound => {
-        this.paopaoSound = sound
-      }
-    )
+    this.paopaoSound = getMySound();
     myZIndex++;
   }
 
